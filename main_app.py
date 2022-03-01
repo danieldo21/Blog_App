@@ -58,7 +58,7 @@ def register():
 @app.route("/login")
 def login():
   form = LoginForm()
-  return render_template('login.html', title='Log In', form=form)
+  return render_template('login.html', title='Login', form=form)
 
 # Allows main app to run the web server
 if __name__=='__main__':
