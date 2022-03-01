@@ -60,5 +60,6 @@ def login():
   form = LoginForm()
   return render_template('login.html', title='Log In', form=form)
 
+# Allows main app to run the web server
 if __name__=='__main__':
     app.run(debug=True)
