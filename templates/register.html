@@ -3,6 +3,12 @@
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend ckass="border-bottom mb-4">Join Today</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-contorl-label") }}
+                </div>
+            </fieldset>
         </form>
     </div>
 {% endblock content %}
