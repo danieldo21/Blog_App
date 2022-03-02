@@ -50,7 +50,7 @@ def about():
     return render_template('about.html', title='About')
 
 # Route for registration page
-@app.route("/register")
+@app.route("/register", methods=['GET, POST'])
 def register():
   form = RegistrationForm()
   return render_template('register.html', title='Register', form=form)
