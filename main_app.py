@@ -1,6 +1,6 @@
 # This is a blog app that allows users to register and post blogs
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -39,10 +39,10 @@ posts = [
 #Routes
 
 # Route for homepage
-@app.route("/")
-@app.route("/home")
+@app.route("/") #route to main page
+@app.route("/home") #route to home page
 def home():
-    return render_template('home.html', posts=posts)
+    return render_template('home.html', posts=posts) # call to render the home page template
 
 # Route for about page
 @app.route("/about")
@@ -53,6 +53,8 @@ def about():
 @app.route("/register", methods=['GET, POST'])
 def register():
   form = RegistrationForm()
+  if form.validate_on_submit():
+    flash(f'Account created for {form.username.data}!', 'success')
   return render_template('register.html', title='Register', form=form)
 
 # Route for login page
