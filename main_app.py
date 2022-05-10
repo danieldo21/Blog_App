@@ -1,8 +1,7 @@
 # This is a blog app that allows users to register and post blogs
-
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
-
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 
