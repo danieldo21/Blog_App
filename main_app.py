@@ -1,16 +1,26 @@
 # This is a blog app that allows users to register and post blogs
+from enum import unique
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
+
+
+
 app = Flask(__name__)
-
-
-
 app.config['SECRET_KEY'] = 'e512e9952e4e59843203abecb8e461a2'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
+
+
+class User(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  username = db.Column(db.string(20), unique=True, nullable=False)
+  username = db.Column(db.string(120), unique=True, nullable=False)
+  image_file = db.Column(db.string(20), nullable=False, default='default.jpg')
+  
+  
 
 # List of post dictionaries
-
 posts = [
     
     {
