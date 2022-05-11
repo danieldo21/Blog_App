@@ -11,14 +11,15 @@ app.config['SECRET_KEY'] = 'e512e9952e4e59843203abecb8e461a2'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
-
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.string(20), unique=True, nullable=False)
   email = db.Column(db.string(120), unique=True, nullable=False)
   image_file = db.Column(db.string(20), nullable=False, default='default.jpg')
+  password = db.Column(db.string(60), nullable=False)
   
-  
+  def __repr__(self):
+    return f"User('{self.username}','{self.email}','{self.image_file}') "
 
 # List of post dictionaries
 posts = [
