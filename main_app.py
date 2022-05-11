@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.string(20), unique=True, nullable=False)
-  username = db.Column(db.string(120), unique=True, nullable=False)
+  email = db.Column(db.string(120), unique=True, nullable=False)
   image_file = db.Column(db.string(20), nullable=False, default='default.jpg')
   
   
