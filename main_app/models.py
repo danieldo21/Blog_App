@@ -1,3 +1,4 @@
+from datetime import datetime
 from main_app import db
 
 class User(db.Model):
