@@ -1,7 +1,3 @@
-# This is a blog app that allows users to register and post blogs
-from datetime import datetime
-from flask import Flask, render_template, url_for, flash, redirect 
-from flask_sqlalchemy import SQLAlchemy
 
 
 
