@@ -1,7 +1,10 @@
-
+from flask import render_template, url_for, flash, redirect 
+from main_app import app
+from main_app.forms import RegistrationForm, LoginForm
+from main_app.models import User, Post
 
 # List of post dictionaries
-posts = [
+posts = [ 
     
     {
       'author':'Daniel Do',      
