@@ -2,6 +2,7 @@ from flask import render_template, url_for, flash, redirect
 from main_app import app, db, bcrypt
 from main_app.forms import RegistrationForm, LoginForm
 from main_app.models import User, Post
+from flask_login import login_user
 
 # List of post dictionaries
 posts = [ 
@@ -62,7 +63,8 @@ def login():
   if form.validate_on_submit():
     user = User.query.filter_by(email=form.email.data).first()
     if user and bcrypt.check_password_hash(user.password, form.password.data): 
-    
-    
-    flash('Login Failed. Please check your username and password', 'danger')
+      login_user(user, remember=form.remember.data)
+      return redirect(url_for('home'))
+    else:
+      flash('Login Unsuccessful. Please check your email and password', 'danger')
   return render_template('login.html', title='Login', form=form)
