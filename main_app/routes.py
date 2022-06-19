@@ -1,8 +1,8 @@
-from flask import render_template, url_for, flash, redirect 
+from flask import render_template, url_for, flash, redirect, request
 from main_app import app, db, bcrypt
 from main_app.forms import RegistrationForm, LoginForm
 from main_app.models import User, Post
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 # List of post dictionaries
 posts = [ 
@@ -79,3 +79,8 @@ def login():
 def logout():
   logout_user()
   return redirect(url_for('home'))
+
+@app.route("/account")
+@login_required
+def account():
+  return render_template('account.html', title='Account')
